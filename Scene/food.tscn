@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b18xjyfg2h2al"]
+
+[ext_resource type="Texture2D" uid="uid://c0mohod3mt2xg" path="res://Asset/items-spritesheet.png" id="1_i2cra"]
+[ext_resource type="Script" path="res://Scripts/food.gd" id="1_vsoye"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejdrw"]
+radius = 2.23607
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ms3l"]
+atlas = ExtResource("1_i2cra")
+region = Rect2(16, 48, 16, 16)
+
+[node name="Food" type="Area2D"]
+script = ExtResource("1_vsoye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ejdrw")
+
+[node name="Food" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 5)
+texture = SubResource("AtlasTexture_0ms3l")
+expand_mode = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
