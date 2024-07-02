@@ -1,18 +1,21 @@
 extends CharacterBody2D
 
 @export var food: Node2D = null
-
 @onready var navigation_agen_2d = $NavigationAgent2D
 @onready var skin = $Skin
+
+signal is_finish_moving
 
 var food_list
 
 var movement_speed = 50
+var is_start_moving = false
 
 
 func _ready():
 	call_deferred("chicken_setup")
 	food_list = get_tree().get_nodes_in_group("food")[0]
+	print(navigation_agen_2d.get_pathfinding_algorithm())
 	pass
 
 
@@ -31,6 +34,9 @@ func chicken_setup():
 		print(navigation_agen_2d.get_current_navigation_path())
 
 	pass
+	
+func let_go():
+	is_start_moving = true
 
 
 func update_food_list():
@@ -39,9 +45,15 @@ func update_food_list():
 	if !available_food.is_empty():
 		var next_food = available_food[0]
 		food = next_food
+	else:
+		is_start_moving = false
+		is_finish_moving.emit()
 
 
 func _physics_process(_delta):
+	
+	if !is_start_moving:
+		return
 
 	if is_instance_valid(food):
 		navigation_agen_2d.target_position = food.global_position
