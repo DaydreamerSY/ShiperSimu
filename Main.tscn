@@ -72,6 +72,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8vcn"]
+resource_name = "Ground"
 texture = ExtResource("2_i0x8c")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -80,6 +81,7 @@ texture = ExtResource("2_i0x8c")
 0:0/0/terrains_peering_bit/bottom_right_corner = 0
 0:0/0/terrains_peering_bit/bottom_side = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_fdke1")
+0:0/0/custom_data_0 = true
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 0
@@ -89,6 +91,7 @@ texture = ExtResource("2_i0x8c")
 1:0/0/terrains_peering_bit/bottom_left_corner = 0
 1:0/0/terrains_peering_bit/left_side = 0
 1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_15t1e")
+1:0/0/custom_data_0 = true
 2:0/0 = 0
 2:0/0/terrain_set = 0
 2:0/0/terrain = 0
@@ -96,6 +99,7 @@ texture = ExtResource("2_i0x8c")
 2:0/0/terrains_peering_bit/bottom_left_corner = 0
 2:0/0/terrains_peering_bit/left_side = 0
 2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_p1s42")
+2:0/0/custom_data_0 = true
 3:0/0 = 0
 3:0/0/terrain_set = 0
 3:0/0/terrain = 0
@@ -148,6 +152,7 @@ texture = ExtResource("2_i0x8c")
 0:1/0/terrains_peering_bit/top_side = 0
 0:1/0/terrains_peering_bit/top_right_corner = 0
 0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s4lle")
+0:1/0/custom_data_0 = true
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
@@ -160,6 +165,7 @@ texture = ExtResource("2_i0x8c")
 1:1/0/terrains_peering_bit/top_side = 0
 1:1/0/terrains_peering_bit/top_right_corner = 0
 1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_114qq")
+1:1/0/custom_data_0 = true
 2:1/0 = 0
 2:1/0/terrain_set = 0
 2:1/0/terrain = 0
@@ -169,6 +175,7 @@ texture = ExtResource("2_i0x8c")
 2:1/0/terrains_peering_bit/top_left_corner = 0
 2:1/0/terrains_peering_bit/top_side = 0
 2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7s6uq")
+2:1/0/custom_data_0 = true
 3:1/0 = 0
 3:1/0/terrain_set = 0
 3:1/0/terrain = 0
@@ -233,6 +240,7 @@ texture = ExtResource("2_i0x8c")
 0:2/0/terrains_peering_bit/top_side = 0
 0:2/0/terrains_peering_bit/top_right_corner = 0
 0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1fmoe")
+0:2/0/custom_data_0 = true
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/terrain = 0
@@ -242,6 +250,7 @@ texture = ExtResource("2_i0x8c")
 1:2/0/terrains_peering_bit/top_side = 0
 1:2/0/terrains_peering_bit/top_right_corner = 0
 1:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_d8xx2")
+1:2/0/custom_data_0 = true
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/terrain = 0
@@ -249,6 +258,7 @@ texture = ExtResource("2_i0x8c")
 2:2/0/terrains_peering_bit/top_left_corner = 0
 2:2/0/terrains_peering_bit/top_side = 0
 2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0qncu")
+2:2/0/custom_data_0 = true
 3:2/0 = 0
 3:2/0/terrain_set = 0
 3:2/0/terrain = 0
@@ -425,6 +435,7 @@ texture = ExtResource("2_i0x8c")
 5:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kn3xn"]
+resource_name = "Water"
 texture = ExtResource("3_roaha")
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
@@ -433,6 +444,7 @@ texture = ExtResource("3_roaha")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x74g8"]
+resource_name = "Bush"
 texture = ExtResource("5_yey48")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -818,13 +830,16 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Bush 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 navigation_layer_0/layers = 1
+custom_data_layer_0/name = "food_place"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_j8vcn")
 sources/1 = SubResource("TileSetAtlasSource_kn3xn")
 sources/2 = SubResource("TileSetAtlasSource_x74g8")
 
-[node name="Node2D" type="Node2D"]
+[node name="DeliverEgg" type="Node2D" node_paths=PackedStringArray("chicken")]
 script = ExtResource("1_yssyj")
 food_scene = ExtResource("6_65ued")
+chicken = NodePath("Chicken")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_uotb1")
@@ -832,13 +847,41 @@ format = 2
 layer_0/name = "Ground"
 layer_0/tile_data = PackedInt32Array(0, 196608, 3, 19, 196608, 3, 655379, 196608, 3, 655360, 196608, 3, 131074, 0, 0, 131075, 65536, 0, 131076, 65536, 0, 131077, 65536, 0, 131078, 65536, 0, 131079, 65536, 0, 131080, 65536, 0, 131081, 65536, 0, 131082, 65536, 0, 131083, 65536, 0, 131084, 65536, 0, 131085, 65536, 0, 131086, 65536, 0, 131087, 65536, 0, 131088, 65536, 0, 131089, 131072, 0, 196625, 131072, 1, 262161, 131072, 1, 327697, 131072, 1, 393233, 131072, 1, 458769, 131072, 1, 524305, 131072, 2, 524304, 65536, 2, 524303, 65536, 2, 524302, 65536, 2, 524301, 65536, 2, 524300, 65536, 2, 524299, 65536, 2, 524298, 65536, 2, 524297, 65536, 2, 524296, 65536, 2, 524295, 65536, 2, 524294, 65536, 2, 524293, 65536, 2, 524292, 65536, 2, 524291, 65536, 2, 524290, 0, 2, 458754, 0, 1, 393218, 0, 1, 327682, 0, 1, 262146, 0, 1, 196610, 0, 1, 458768, 65536, 1, 458767, 65536, 1, 458766, 65536, 1, 458765, 65536, 1, 458764, 65536, 1, 458763, 65536, 1, 458762, 65536, 1, 458761, 65536, 1, 458760, 65536, 1, 458759, 65536, 1, 458758, 65536, 1, 458757, 65536, 1, 458756, 65536, 1, 458755, 65536, 1, 393219, 65536, 1, 393220, 65536, 1, 393221, 65536, 1, 393222, 65536, 1, 393223, 65536, 1, 393224, 65536, 1, 393225, 65536, 1, 393226, 65536, 1, 393227, 65536, 1, 393228, 65536, 1, 393229, 65536, 1, 393230, 65536, 1, 393231, 65536, 1, 393232, 65536, 1, 327696, 65536, 1, 327695, 65536, 1, 327694, 65536, 1, 327693, 65536, 1, 327692, 65536, 1, 327691, 65536, 1, 327690, 65536, 1, 327689, 65536, 1, 327688, 65536, 1, 327687, 65536, 1, 327686, 65536, 1, 327685, 65536, 1, 327684, 65536, 1, 327683, 65536, 1, 262147, 65536, 1, 262148, 65536, 1, 262149, 65536, 1, 262150, 65536, 1, 262151, 65536, 1, 262152, 65536, 1, 262153, 65536, 1, 262154, 65536, 1, 262155, 65536, 1, 262156, 65536, 1, 262157, 65536, 1, 262158, 65536, 1, 262159, 65536, 1, 262160, 65536, 1, 196624, 65536, 1, 196623, 65536, 1, 196622, 65536, 1, 196621, 65536, 1, 196620, 65536, 1, 196619, 65536, 1, 196618, 65536, 1, 196617, 65536, 1, 196616, 65536, 1, 196615, 65536, 1, 196614, 65536, 1, 196613, 65536, 1, 196612, 65536, 1, 196611, 65536, 1)
 layer_1/name = "Bush"
-layer_1/tile_data = PackedInt32Array(131078, 196610, 0, 196614, 196610, 1, 262150, 262146, 4, 327686, 196610, 2, 262151, 65538, 3, 262152, 458754, 3, 196616, 262146, 0, 196617, 65538, 3, 196618, 65538, 3, 196619, 131074, 3)
+layer_1/tile_data = PackedInt32Array(196611, 2, 0, 262147, 2, 2, 262148, 131074, 2, 196612, 131074, 0, 196615, 2, 0, 262151, 2, 2, 262152, 131074, 2, 196616, 131074, 0, 393219, 2, 0, 458755, 2, 2, 458756, 131074, 2, 393220, 131074, 0, 393223, 2, 0, 458759, 2, 2, 458760, 131074, 2, 393224, 131074, 0, 262155, 2, 0, 327691, 2, 1, 393227, 2, 2, 393228, 131074, 2, 327692, 131074, 1, 262156, 131074, 0)
 script = ExtResource("6_bac7q")
 
 [node name="Chicken" parent="." instance=ExtResource("7_7cmx3")]
+position = Vector2(53, 84)
 wall_min_slide_angle = 0.0
 
 [node name="Foods" type="Node" parent="." groups=["food"]]
 
-[node name="Food" parent="Foods" instance=ExtResource("6_65ued")]
-position = Vector2(69, 55)
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(160, 90)
+
+[node name="TextureButton" type="TextureButton" parent="UI"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 10
+text = "START"
+
+[connection signal="is_finish_moving" from="Chicken" to="." method="_on_chicken_is_finish_moving"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_button_pressed"]

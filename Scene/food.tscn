@@ -32,4 +32,12 @@ pivot_offset = Vector2(5, 5)
 texture = SubResource("AtlasTexture_0ms3l")
 expand_mode = 1
 
+[node name="order" type="Label" parent="."]
+offset_left = -1.0
+offset_top = -15.0
+offset_right = 7.0
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 8
+text = "12"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
